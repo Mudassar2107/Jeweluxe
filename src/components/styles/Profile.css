@@ -1,0 +1,502 @@
+.profile-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.profile-avatar-section {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #D4AF37;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+.avatar-edit-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #D4AF37;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.avatar-edit-button:hover {
+    background: #b89530;
+    transform: scale(1.1);
+}
+
+.profile-heading {
+    font-size: 2.2rem;
+    color: #D4AF37;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1.5rem;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #f9f9f9;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    color: #D4AF37;
+    font-size: 1.5rem;
+}
+
+.stat-item h4 {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.stat-item p {
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.profile-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    background: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tab-button:hover {
+    color: #D4AF37;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tab-button.active {
+    background: #D4AF37;
+    color: white;
+}
+
+.profile-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-main {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.input-group {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.input-icon {
+    color: #D4AF37;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.input-field {
+    flex: 1;
+}
+
+.input-field strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.profile-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.profile-input:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+    outline: none;
+}
+
+.profile-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.profile-textarea:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+    outline: none;
+}
+
+.bio-section {
+    margin-bottom: 1.5rem;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    background: #D4AF37;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.profile-button:hover {
+    background: #b89530;
+}
+
+.password-button {
+    background: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+}
+
+.password-button:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.profile-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.profile-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #D4AF37;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.orders-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.order-item {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.order-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.order-id {
+    font-weight: bold;
+    color: #333;
+}
+
+.order-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.order-status.delivered {
+    background: #e6f4ea;
+    color: #1e8e3e;
+}
+
+.order-status.shipped {
+    background: #e8f0fe;
+    color: #1a73e8;
+}
+
+.order-status.processing {
+    background: #fef7e0;
+    color: #f9a825;
+}
+
+.order-details {
+    margin-bottom: 1rem;
+}
+
+.view-detail-button {
+    background: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.view-detail-button:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-card h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.product-price {
+    color: #D4AF37;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+}
+
+.wishlist-actions, .viewed-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.add-to-cart-btn {
+    background: #D4AF37;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 2;
+    transition: background 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.add-to-cart-btn:hover {
+    background: #b89530;
+}
+
+.remove-wishlist-btn, .add-to-wishlist-btn {
+    background: #f1f1f1;
+    color: #ff6b6b;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.remove-wishlist-btn:hover {
+    background: #ffe5e5;
+}
+
+.add-to-wishlist-btn:hover {
+    background: #ffe5e5;
+}
+
+.empty-message {
+    text-align: center;
+    color: #777;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+    .profile-content {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 1rem;
+    }
+
+    .profile-header {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-heading {
+        font-size: 1.8rem;
+    }
+
+    .profile-stats {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .stat-item {
+        min-width: 120px;
+    }
+
+    .profile-tabs {
+        gap: 0.5rem;
+    }
+
+    .tab-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .profile-main,
+    .profile-section {
+        padding: 1.5rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-item {
+        width: 100%;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-avatar-section {
+        width: 120px;
+        height: 120px;
+    }
+
+    .avatar-edit-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .tab-button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.7rem;
+        width: calc(50% - 0.5rem);
+        justify-content: center;
+    }
+}
