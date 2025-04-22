@@ -1,0 +1,25 @@
+/* Global responsive styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Mobile-first responsive breakpoints */
+  @media screen and (max-width: 768px) {
+    .products-section {
+      padding: 1rem;
+    }
+  
+    .about-section {
+      padding: 1rem;
+    }
+  
+    section {
+      padding: 1rem !important;
+    }
+  }
