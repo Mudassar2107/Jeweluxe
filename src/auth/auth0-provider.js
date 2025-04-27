@@ -17,7 +17,8 @@ export const Auth0ProviderWithNavigate = ({ children }) => {
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: window.location.origin,
+        redirect_uri: "https://jeweluxe.vercel.app/",
+        scope: "openid profile email"
       }}
       onRedirectCallback={onRedirectCallback}
     >

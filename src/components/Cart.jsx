@@ -1,14 +1,50 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
+import { useAuth0 } from "@auth0/auth0-react";
 import './styles/Cart.css';
 
 const Cart = () => {
   const { cart, dispatch } = useCart();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   const handleRemoveFromCart = (index) => {
     dispatch({ type: 'REMOVE_FROM_CART', index });
   };
+
+  if (!isAuthenticated) {
+    return (
+      <motion.div 
+        className="cart-container"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.h2 
+          className="cart-heading"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          Please Sign In
+        </motion.h2>
+        <motion.p
+          className="cart-empty-message"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          You need to sign in to view your cart
+        </motion.p>
+        <button 
+          className="auth-button" 
+          onClick={() => loginWithRedirect()}
+        >
+          Sign In
+        </button>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div 
