@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaUser, FaEnvelope, FaCalendar, FaEdit, FaSave, FaBox, 
   FaHistory, FaMapMarkerAlt, FaKey, FaHeart, FaShoppingBag } from 'react-icons/fa';
+import { useAuth0 } from "@auth0/auth0-react";
 import { pageTransition } from './styles/pageTransition';
 import './styles/Profile.css';
 
 const Profile = () => {
+  const { user: auth0User, isAuthenticated, loginWithRedirect } = useAuth0();
   const [activeTab, setActiveTab] = useState('personal');
   const [isEditing, setIsEditing] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    dob: '1990-01-01',
-    bio: 'Jewelry enthusiast with a passion for unique and elegant pieces. Always looking for the next perfect addition to my collection.',
-    avatar: '/images/avatar-placeholder.jpg',
-    address: '123 Jewelry Lane, Diamond City, Gold State 54321'
+  const [userInfo, setUserInfo] = useState(() => {
+    // Only try to get user data from localStorage if user is authenticated
+    if (isAuthenticated) {
+      const savedUserInfo = localStorage.getItem('userInfo');
+      if (savedUserInfo) {
+        return JSON.parse(savedUserInfo);
+      }
+    }
+    // Default user info
+    return {
+      name: '',
+      email: '',
+      dob: '',
+      bio: '',
+      avatar: '',
+      address: ''
+    };
   });
 
   const [recentOrders] = useState([
@@ -72,6 +84,25 @@ const Profile = () => {
     },
   ]);
 
+  // Save to localStorage whenever userInfo changes and user is authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    }
+  }, [userInfo, isAuthenticated]);
+
+  // Update userInfo when Auth0 user data changes
+  useEffect(() => {
+    if (auth0User && isAuthenticated) {
+      setUserInfo(prev => ({
+        ...prev,
+        name: auth0User.name || prev.name,
+        email: auth0User.email || prev.email,
+        avatar: auth0User.picture || prev.avatar
+      }));
+    }
+  }, [auth0User, isAuthenticated]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserInfo(prev => ({
@@ -81,8 +112,37 @@ const Profile = () => {
   };
 
   const handleEditToggle = () => {
+    if (isEditing) {
+      // Save changes to localStorage when clicking Save Changes
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    }
     setIsEditing(prev => !prev);
   };
+
+  // If not authenticated, show login prompt
+  if (!isAuthenticated) {
+    return (
+      <motion.div 
+        className="profile-container"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="auth-prompt">
+          <h2>Please Sign In</h2>
+          <p>You need to sign in to view and edit your profile</p>
+          <motion.button
+            className="auth-button"
+            onClick={() => loginWithRedirect()}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Sign In
+          </motion.button>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
