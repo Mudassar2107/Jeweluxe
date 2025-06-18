@@ -74,7 +74,15 @@ const Cart = () => {
         <ul className="cart-items">
           {cart.map((item, index) => (
             <li key={index} className="cart-item">
-              <img src={process.env.PUBLIC_URL + item.image} alt={item.name} className="cart-item-image" />
+              <img 
+                src={process.env.PUBLIC_URL + item.image} 
+                alt={item.name} 
+                className="cart-item-image" 
+                onError={(e) => {
+                  e.target.src = process.env.PUBLIC_URL + '/images/p1.jpg'; // Fallback image
+                  e.target.alt = 'Product image not available';
+                }}
+              />
               <div className="cart-item-details">
                 <h4>{item.name}</h4>
                 <p>₹{item.price}</p>

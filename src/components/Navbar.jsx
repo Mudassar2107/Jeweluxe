@@ -4,13 +4,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import './styles/Navbar.css';
 
-const Navbar = ({ onAuthClick }) => {
+const Navbar = ({ onAuthClick, isAuthenticated, username }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('/');
   const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  const { isAuthenticated, user, logout } = useAuth0();
+  const { user, logout } = useAuth0();
 
   const handleNavigation = (path) => {
     if (path === '/') {

@@ -160,7 +160,7 @@ const Profile = () => {
           transition={{ duration: 0.5 }}
         >
           <img 
-            src={process.env.PUBLIC_URL + userInfo.avatar} 
+            src={userInfo.avatar.startsWith('http') ? userInfo.avatar : process.env.PUBLIC_URL + userInfo.avatar} 
             alt="Profile" 
             className="profile-avatar" 
           />
@@ -404,6 +404,10 @@ const Profile = () => {
                       src={process.env.PUBLIC_URL + product.image} 
                       alt={product.productName} 
                       className="product-image"
+                      onError={(e) => {
+                        e.target.src = process.env.PUBLIC_URL + '/images/p1.jpg'; // Fallback image
+                        e.target.alt = 'Product image not available';
+                      }}
                     />
                     <h4>{product.productName}</h4>
                     <p className="product-price">{product.price}</p>
@@ -443,6 +447,10 @@ const Profile = () => {
                       src={process.env.PUBLIC_URL + product.image} 
                       alt={product.productName} 
                       className="product-image"
+                      onError={(e) => {
+                        e.target.src = process.env.PUBLIC_URL + '/images/p1.jpg'; // Fallback image
+                        e.target.alt = 'Product image not available';
+                      }}
                     />
                     <h4>{product.productName}</h4>
                     <p className="product-price">{product.price}</p>

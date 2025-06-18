@@ -25,7 +25,14 @@ const ProductCard = ({ product }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="product-image-container">
-        <img src={process.env.PUBLIC_URL + product.image} alt={product.name} />
+        <img 
+          src={process.env.PUBLIC_URL + product.image} 
+          alt={product.name} 
+          onError={(e) => {
+            e.target.src = process.env.PUBLIC_URL + '/images/p1.jpg'; // Fallback image
+            e.target.alt = 'Product image not available';
+          }}
+        />
         
         <AnimatePresence>
           {isHovered && (
